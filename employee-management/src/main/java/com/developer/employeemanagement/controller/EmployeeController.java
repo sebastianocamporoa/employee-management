@@ -15,7 +15,7 @@ import java.util.Collections;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "*")
+//@CrossOrigin(origins = "*")
 public class EmployeeController {
 
     private final RestTemplate restTemplate;
@@ -27,7 +27,7 @@ public class EmployeeController {
         this.employeeBusiness = employeeBusiness;
     }
 
-    @CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST})
+    //@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST})
     @GetMapping("/employees")
     public ResponseEntity<Object> getEmployees() {
         String apiUrl = "https://dummy.restapiexample.com/api/v1/employees";
