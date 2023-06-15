@@ -29,7 +29,7 @@ public class EmployeeController {
         this.employeeBusiness = employeeBusiness;
     }
 
-    @CrossOrigin(origins = "https://ephemeral-phoenix-b31192.netlify.app")
+    @CrossOrigin(origins = "*")
     @GetMapping("/employees")
     public ResponseEntity<Object> getEmployees() {
         String apiUrl = "https://dummy.restapiexample.com/api/v1/employees";
