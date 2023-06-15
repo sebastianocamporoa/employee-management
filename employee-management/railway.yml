@@ -1,0 +1,8 @@
+version: 1
+commands:
+  - gradle build
+services:
+  - name: app
+    env:
+      - PORT=8080
+    command: java -jar build/libs/employee-management-0.0.1-SNAPSHOT.jar
