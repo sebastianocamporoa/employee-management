@@ -5,7 +5,7 @@ FROM gradle:7.2.0-jdk11 AS build
 WORKDIR /home/app
 COPY build.gradle .
 COPY settings.gradle .
-COPY src ./employee-management/src
+COPY employee-management/src ./employee-management/src
 RUN gradle clean build
 
 #
