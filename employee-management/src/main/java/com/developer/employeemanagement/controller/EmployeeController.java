@@ -15,7 +15,7 @@ import java.util.Collections;
 import java.util.List;
 
 @RestController
-//@CrossOrigin(origins = "*")
+@CrossOrigin
 public class EmployeeController {
 
     private final RestTemplate restTemplate;
