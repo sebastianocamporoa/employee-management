@@ -1,5 +1,5 @@
 FROM gradle:7.2.0-jdk11 AS build
 WORKDIR /app
-COPY employee-management-0.0.1-SNAPSHOT.jar app.jar
+COPY employee-management-0.0.1-SNAPSHOT.WAR app.WAR
 EXPOSE 8080
-CMD ["java", "-jar", "app.jar"]
+CMD ["java", "-WAR", "app.WAR"]
