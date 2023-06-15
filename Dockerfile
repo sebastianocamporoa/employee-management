@@ -1,18 +1,6 @@
-#
-# Build stage
-#
-FROM gradle:7.2.0-jdk11 AS build
-WORKDIR /home/app
-COPY employee-management/build.gradle ./employee-management
-COPY employee-management/settings.gradle ./employee-management
-COPY employee-management/src ./employee-management/src
-RUN mkdir ./employee-management/src/main/resources
-RUN gradle clean build -p employee-management
-
-#
-# Package stage
-#
-FROM adoptopenjdk:11-jre-hotspot
-COPY --from=build /home/app/employee-management/build/libs/employee-management-0.0.1-SNAPSHOT.jar /usr/local/lib/demo.jar
+FROM adoptopenjdk:17-jdk-hotspot
+WORKDIR /app
+COPY employee-management-0.0.1-SNAPSHOT.jar app.jar
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "/usr/local/lib/demo.jar"]
+COPY application.properties .
+CMD ["java", "-jar", "app.jar"]
