@@ -26,7 +26,7 @@ public class EmployeeController {
         this.employeeBusiness = employeeBusiness;
     }
 
-    @CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST})
+    @CrossOrigin(origins = "https://ephemeral-phoenix-b31192.netlify.app", methods= {RequestMethod.GET,RequestMethod.POST})
     @GetMapping("/employees")
     public ResponseEntity<Object> getEmployees() {
         String apiUrl = "https://dummy.restapiexample.com/api/v1/employees";
