@@ -6,6 +6,7 @@ WORKDIR /home/app
 COPY employee-management/build.gradle ./employee-management
 COPY employee-management/settings.gradle ./employee-management
 COPY employee-management/src ./employee-management/src
+RUN mkdir ./employee-management/src/main/resources
 RUN gradle clean build -p employee-management
 
 #
