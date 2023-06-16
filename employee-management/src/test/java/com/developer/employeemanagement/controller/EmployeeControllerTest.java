@@ -98,7 +98,8 @@ public class EmployeeControllerTest {
         when(employeeBusiness.calculateAnnualSalary(5000.0)).thenReturn(60000.0);
 
         // Call the controller method
-        EmployeeModel actualEmployee = employeeController.getEmployeeById(1L);
+        ResponseEntity<?> responseEntity = employeeController.getEmployeeById(1L);
+        EmployeeModel actualEmployee = (responseEntity.getBody() instanceof EmployeeModel) ? (EmployeeModel) responseEntity.getBody() : null;
 
         // Verify RestTemplate's getForEntity method is called with the correct URL and class
         verify(restTemplate, times(1)).getForEntity(eq("https://dummy.restapiexample.com/api/v1/employee/1"), eq(EmployeeApiResponse.class));

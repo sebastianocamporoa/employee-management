@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.developer.employeemanagement.controller.EmployeeControllerTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2023-06-15T17:10:40" hostname="DESKTOP-G9A93N7" time="6.277">
+<testsuite name="com.developer.employeemanagement.controller.EmployeeControllerTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2023-06-16T07:17:34" hostname="DESKTOP-G9A93N7" time="2.869">
   <properties/>
-  <testcase name="testGetEmployees()" classname="com.developer.employeemanagement.controller.EmployeeControllerTest" time="6.26"/>
-  <testcase name="testGetEmployeeById()" classname="com.developer.employeemanagement.controller.EmployeeControllerTest" time="0.009"/>
+  <testcase name="testGetEmployees()" classname="com.developer.employeemanagement.controller.EmployeeControllerTest" time="2.829"/>
+  <testcase name="testGetEmployeeById()" classname="com.developer.employeemanagement.controller.EmployeeControllerTest" time="0.017"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

@@ -55,19 +55,27 @@ public class EmployeeController {
     }
 
     @GetMapping("/employee/{id}")
-    public EmployeeModel getEmployeeById(@PathVariable Long id) {
+    public ResponseEntity<?> getEmployeeById(@PathVariable Long id) {
         String apiUrl = "https://dummy.restapiexample.com/api/v1/employee/" + id;
 
-        ResponseEntity<EmployeeApiResponse> response = restTemplate.getForEntity(apiUrl, EmployeeApiResponse.class);
-        EmployeeApiResponse employeeResponse = response.getBody();
+        try {
+            ResponseEntity<EmployeeApiResponse> response = restTemplate.getForEntity(apiUrl, EmployeeApiResponse.class);
+            EmployeeApiResponse employeeResponse = response.getBody();
 
-        if (employeeResponse != null && employeeResponse.getData() != null) {
-            EmployeeModel employee = employeeResponse.getData();
-            double annualSalary = employeeBusiness.calculateAnnualSalary(employee.getEmployeeSalary());
-            employee.setAnnualSalary(annualSalary);
-            return employee;
-        } else {
-            throw new RuntimeException("Employee not found");
+            if (employeeResponse != null && employeeResponse.getData() != null) {
+                EmployeeModel employee = employeeResponse.getData();
+                double annualSalary = employeeBusiness.calculateAnnualSalary(employee.getEmployeeSalary());
+                employee.setAnnualSalary(annualSalary);
+                return ResponseEntity.ok(employee);
+            } else {
+                ErrorResponse errorResponse = new ErrorResponse(HttpStatus.NOT_FOUND.value(), "Employee not found", null);
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            ErrorResponse errorResponse = new ErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(),
+                    "Error retrieving employee", e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponse);
         }
     }
 }
